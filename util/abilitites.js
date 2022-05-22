@@ -32,14 +32,14 @@ function defineAdminRules({ can }) {
 }
 
 function defineUserRules({ can }, user) {
-    can(['read', ['Commits', 'Repos', 'Abilities']])
+    can(['read', ['Enroll', 'Courses', 'Teacher']])
     can(['read', {id: user.id}])
-    can(['create', ['Repos', 'Commits']])
-    can(['update', ['Repos', 'Commits']])   
+    can(['create', ['Enroll']])
+    can(['delete', ['Enroll']])
 }
 
 function defineGuestRules({ can }) {
-    can('read', ['Commits', 'Repos', 'Abilities']);
+    can('read', ['Courses', 'Teacher', 'Abilities']);
 }
 
 module.exports = {

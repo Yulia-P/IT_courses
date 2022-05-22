@@ -3,7 +3,6 @@ const db = require('../db/db')
 const path = require('path')
 
 const ApiController = {
-
     getUserAbilities: (req, res, next) => {
         res.json(defineRulesFor(req.user))
     },

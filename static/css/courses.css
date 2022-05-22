@@ -1,0 +1,90 @@
+h1{
+    color: hotpink;
+}
+
+body{
+    background: url(/style/img/main.png);
+    /* color: #8EC9D8; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px; 
+    width: 100%; 
+    background: #131D47; 
+    justify-content: start;
+}
+
+.imgbrain{
+    width: 50;
+    height: 50;
+    margin-left: 7;
+    margin-top: 5;
+}
+
+.fbrain{
+    margin-top: 25;
+    font-size: 25px;
+    
+}
+.brain{
+    border: yellowgreen;
+    background: none;
+    /* width: 250px; */
+    font-size: 14px;   
+    color: #5DDADB  
+}
+
+.courses{
+    border: none;
+    background: none;
+    width: 150px; 
+    margin-top: 15;
+    font-size: 25px;
+    margin-left: 35;
+    color: #5DDADB
+}
+.teacher{
+    border: none;
+    background: none;
+    width: 150px;
+    margin-top: 15;
+    font-size: 25px;
+    margin-left: 35;
+    color: #5DDADB   
+}
+
+.mycourses{
+    border: none;
+    background: none;
+    width: 150px;
+    font-size: 25px;
+    margin-left: 35;
+    color: #5DDADB   
+}
+
+.login{
+    border: none;
+    background: none;
+    width: 150px;
+    font-size: 25px;
+    margin-left: 35;
+    color: #5DDADB   
+    }
+
+.logout{
+    margin-top: 15;
+    font-size: 25px;
+    margin-left: 350;
+}
+
+.register{
+    margin-top: 15;
+    font-size: 25px;
+    margin-left: 40;
+}
+

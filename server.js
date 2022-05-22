@@ -4,10 +4,13 @@ const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 
 
+
 const app = express()
 app.use(cookieParser('ITCOURSES'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.use("/style", express.static("static"));
 
 
 global.accessKey = 'accsessTokenSecret'
@@ -16,6 +19,7 @@ global.oldRefreshKeyCount = 0
 
 
 let authRouter = require('./routes/auth.route')
+let coursesRouter = require('./routes/courses.route')
 //let apiRouter = require('./routes/api.route')
 
 app.use((req, res, next) => {
@@ -33,7 +37,7 @@ app.use((req, res, next) => {
 
 app.use(express.static('static'))
 app.use(authRouter)
-//app.use(apiRouter)
+app.use(coursesRouter)
 app.use((err, req, res, next) => {
     res.send(`${err}`)
 })
