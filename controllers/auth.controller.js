@@ -10,7 +10,7 @@ const AuthController = {
         res.sendFile(path.join(__dirname, '../static/html/login.html'))
     },
     getMain: (req, res, next) =>{
-        res.sendFile(path.join(__dirname, '../static/html/main.html'))
+        res.sendFile(path.join(__dirname, '../static/html/courses.html'))
     },
 
     //Login
@@ -19,7 +19,6 @@ const AuthController = {
         const candidate = await db.models.Users.findOne({
             where: {
                 username: req.body.username,
-                //email: req.body.email
             }
         })
         if (candidate) {
@@ -35,8 +34,7 @@ const AuthController = {
                 httpOnly: true,
                 sameSite: 'strict'
             })
-            res.redirect('/main')}
-            //res.sendFile(path.join(__dirname, '../static/html/main.html'))}
+            res.redirect('/courses')}
         } else {
             res.redirect('/login')
         }

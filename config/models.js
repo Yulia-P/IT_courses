@@ -30,7 +30,7 @@ Courses.init(
         id: {type: Sequelize.INTEGER, primaryKey:true, autoIncrementIdentity: true},
         language: {type: Sequelize.STRING, allowNull: false},
         courseName: {type: Sequelize.STRING, allowNull: false},
-        courseDescrition: {type: Sequelize.TEXT, allowNull: false},
+        courseDescrition: {type: Sequelize.STRING, allowNull: false},
         teacher: {type: Sequelize.INTEGER, allowNull: false}
     },
     {sequelize, modelName:'Courses', tableName:'courses', timestamps: false}

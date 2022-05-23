@@ -20,7 +20,8 @@ global.oldRefreshKeyCount = 0
 
 let authRouter = require('./routes/auth.route')
 let coursesRouter = require('./routes/courses.route')
-//let apiRouter = require('./routes/api.route')
+let teacherRouter = require('./routes/teacher.route')
+let enrollmentsRouter = require('./routes/enrollments.route')
 
 app.use((req, res, next) => {
     if (req.cookies.accessToken) {
@@ -38,6 +39,8 @@ app.use((req, res, next) => {
 app.use(express.static('static'))
 app.use(authRouter)
 app.use(coursesRouter)
+app.use(teacherRouter)
+app.use(enrollmentsRouter)
 app.use((err, req, res, next) => {
     res.send(`${err}`)
 })
