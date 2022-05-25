@@ -5,7 +5,7 @@ const { abilityCheckMiddleware } = require('../util/middleware')
 let router = express.Router()
 
 router.get('/teacher', TeacherController.getTeacherPage)
-router.get('/teacher',[abilityCheckMiddleware('read', 'Teacher')], TeacherController.getTeacher)
+router.get('/getTeacher', TeacherController.getTeacher)
 
 // router.post('/courses', [abilityCheckMiddleware('create', 'Repos')], CoursController.addCourses)
 // router.post('/courses', [abilityCheckMiddleware('create', 'Commits')], CoursController.addCommit)

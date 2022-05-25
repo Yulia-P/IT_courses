@@ -7,10 +7,10 @@ const bcrypt = require('../safety/bcrypt')
 const AuthController = {
     //Login
     getLogin: (req, res, next) => {
-        res.sendFile(path.join(__dirname, '../static/html/login.html'))
+        res.sendFile(path.join(__dirname, '../views/login.html'))
     },
     getMain: (req, res, next) =>{
-        res.sendFile(path.join(__dirname, '../static/html/courses.html'))
+        res.sendFile(path.join(__dirname, '../views/main.html'))
     },
 
     //Login
@@ -34,7 +34,8 @@ const AuthController = {
                 httpOnly: true,
                 sameSite: 'strict'
             })
-            res.redirect('/courses')}
+            res.redirect('/main')
+        }
         } else {
             res.redirect('/login')
         }
@@ -42,7 +43,7 @@ const AuthController = {
 
     //Registration 
     getRegister: (req, res, next) => {
-        res.sendFile(path.join(__dirname, '../static/html/register.html'))
+        res.sendFile(path.join(__dirname, '../views/register.html'))
     },
 
     //Registration
@@ -58,7 +59,30 @@ const AuthController = {
         res.clearCookie('accessToken')
         res.clearCookie('refreshToken')
         res.redirect('/login')
-    }  
+    },
+
+    //Role
+    getRole: (req, res, next) => {
+        let userRole = 'user';
+        let adminRole = 'admin';
+        if(req.user != undefined){
+            switch(req.user.role){
+                case 'user': {
+                    res.send(JSON.stringify(userRole))
+                    break;
+                }
+                case 'admin': {
+                    res.send(JSON.stringify(adminRole))
+                    break;
+                }
+            }
+        }
+    },
+    getUserById : (req, res, next) => {
+        const user = await Users.findOne({ where: { id: parseInt(req.params.id) } })
+        res.send(JSON.stringify(user))    
+    }
+    
 }
 
 module.exports = AuthController

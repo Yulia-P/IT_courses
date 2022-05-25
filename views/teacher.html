@@ -1,0 +1,38 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/css/teacher.css">
+<!-- <script src="style/js/courses.js"></script>
+<script src="style/js/teacher.js"></script> -->
+<script src="style/js/main.js"></script>
+
+<div class="main">    
+    <img class="imgbrain" src="/style/img/brain.png">
+    <form class='fbrain' action='/main'>
+        <button class="brain">BRAIN HACK</button>
+    </form>
+
+    <!-- <form class='fcourse' action = "/courses">  -->
+        <button class="courses" onclick="getCoursesPage()" >COURSES</button>
+    <!-- </form> -->
+
+    <!-- <form class='fteacher' action = "/teacher"> -->
+        <button class="teacher" onclick="getTeacherPage()">TEACHER</button>
+    <!-- </form> -->
+
+    <!-- <form class='fenroll' action ='/enroll'> -->
+        <button class="mycourses" onclick="getEnrollPage()">MY COURSES</button>
+    <!-- </form>     -->
+
+    <form class='logout' action = "/logout">
+        <button class="login" action ="/logout" >LOGOUT/LOGIN</button>
+    </form>
+    
+    <form class='register' action = "/register">
+        <button class="login" action ="/register">REGISTRATION</button>
+    </form>
+</div>
+
+<div class="paget" id="paget">
+
+</div>

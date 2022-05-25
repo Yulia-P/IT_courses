@@ -31,16 +31,17 @@ Courses.init(
         language: {type: Sequelize.STRING, allowNull: false},
         courseName: {type: Sequelize.STRING, allowNull: false},
         courseDescrition: {type: Sequelize.STRING, allowNull: false},
-        teacher: {type: Sequelize.INTEGER, allowNull: false}
+        teacher: {type: Sequelize.STRING, allowNull: false},
+        image:{type: Sequelize.STRING} 
     },
     {sequelize, modelName:'Courses', tableName:'courses', timestamps: false}
 )
 
 Teacher.init(
     {
-        id: {type: Sequelize.INTEGER, primaryKey:true, autoIncrementIdentity: true},
-        tname: {type: Sequelize.STRING, allowNull: false},
-        tsurname: {type: Sequelize.STRING, allowNull: false},
+        id: {type: Sequelize.INTEGER, autoIncrementIdentity: true,  unique: true},
+        tname: {type: Sequelize.STRING, primaryKey:true, allowNull: false},
+        photo: {type: Sequelize.STRING},
         subject: {type: Sequelize.STRING, allowNull: false}
     },
     {sequelize, modelName:'Teacher', tableName:'teacher', timestamps: false}
@@ -48,7 +49,7 @@ Teacher.init(
 
 
 //????????
-Courses.hasMany(Teacher, {as:'courses_teacher', foreignKey:'teacher', sourceKey:'id'})
+Teacher.hasMany(Courses, {foreignKey:'teacher'})
 Courses.hasMany(Enroll, {as:'enroll_courses', foreignKey:'course', sourceKey:'id'})
 Users.hasMany(Enroll, {as:'enroll_users', foreignKey:'student', sourceKey:'id'})
 

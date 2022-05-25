@@ -1,11 +1,11 @@
 const express = require('express')
 const CoursesController = require('../controllers/courses.controller')
-const { abilityCheckMiddleware } = require('../util/middleware')
+// const { abilityCheckMiddleware } = require('../util/middleware')
 
 let router = express.Router()
 
 router.get('/courses', CoursesController.getCoursesPage)
-router.get('/courses',[abilityCheckMiddleware('read', 'Courses')], CoursesController.getCourses)
+router.get('/getCourses', CoursesController.getCourses)
 
 // router.post('/courses', [abilityCheckMiddleware('create', 'Repos')], CoursController.addCourses)
 // router.post('/courses', [abilityCheckMiddleware('create', 'Commits')], CoursController.addCommit)

@@ -6,9 +6,9 @@ global.sequelize = new Sequelize('ITCOURSES', 'root', 'Zalesse2015!', {host:'loc
 const redisClient = redis.createClient('//redis-10275.c124.us-central1-1.gce.cloud.redislabs.com:10275',
 {password: 'RMjSK1pCVWjZARGPjtE9fOwjIbGTBQVz'})
 
-const {Users, Enroll, Courses, Teacher, Lectures} = require('./models')
+const {Users, Enroll, Courses, Teacher} = require('./models')
 
 module.exports = {
     redisClient,
-    models: {Users, Enroll, Courses, Teacher,  Lectures}
+    models: {Users, Enroll, Courses, Teacher}
 }

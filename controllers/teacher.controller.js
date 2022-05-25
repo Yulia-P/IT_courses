@@ -5,7 +5,8 @@ const fs = require('fs')
 
 const TeacherController = {
     getTeacherPage:  (req, res, next) => {
-        res.sendFile(path.join(__dirname, '../static/html/teacher.html'))
+        let view = fs.readFileSync('./views/teacher.html', "utf8");
+        res.send(view);
     },
 
     getTeacher: (req, res, next) => {

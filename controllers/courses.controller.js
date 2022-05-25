@@ -5,7 +5,9 @@ const fs = require('fs')
 
 const CoursesController = {
     getCoursesPage:  (req, res, next) => {
-        res.sendFile(path.join(__dirname, '../static/html/courses.html'))
+        let view = fs.readFileSync('./views/courses.html', "utf8");
+        res.send(view);
+        // res.sendFile(path.join(__dirname, '../static/html/courses.html'))
     },
 
     getCourses: (req, res, next) => {
