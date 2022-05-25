@@ -10,5 +10,5 @@ router.post('/login', AuthController.postLogin)
 router.post('/register', AuthController.postRegister)
 router.get('/main', AuthController.getMain)
 router.get('/role', AuthController.getRole)
-router.get('/getUserById/:id', AuthController.getUserById)
+router.get('/getUser', AuthController.getCurrentUser)
 module.exports = router

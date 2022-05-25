@@ -8,8 +8,8 @@ class Courses extends Model{}
 class Teacher extends Model{}
 Users.init (
     {
-        id:	{type: Sequelize.INTEGER, primaryKey:true, autoIncrementIdentity: true},
-        username:{type: Sequelize.STRING, allowNull: false, unique: true},     
+        id:	{type: Sequelize.INTEGER, unique: true, autoIncrementIdentity: true},
+        username:{type: Sequelize.STRING, primaryKey:true, allowNull: false, unique: true},     
         password:	{type: Sequelize.STRING, allowNull: false},
         role: {type: Sequelize.STRING, validate: {isIn:[['user', 'admin']]}}
     },
@@ -20,16 +20,17 @@ Enroll.init(
     {
         id: {type: Sequelize.INTEGER, primaryKey:true, autoIncrementIdentity: true},
         student:  {type: Sequelize.INTEGER, allowNull: false},
-        course: {type: Sequelize.INTEGER, allowNull: false}
+        course: {type: Sequelize.INTEGER, allowNull: false},
+        lector: {type: Sequelize.INTEGER, allowNull: false}
     },
     {sequelize, modelName:'Enroll', tableName:'enrollments', timestamps: false}
 )
 
 Courses.init(
     {
-        id: {type: Sequelize.INTEGER, primaryKey:true, autoIncrementIdentity: true},
+        id: {type: Sequelize.INTEGER, unique: true, autoIncrementIdentity: true},
         language: {type: Sequelize.STRING, allowNull: false},
-        courseName: {type: Sequelize.STRING, allowNull: false},
+        courseName: {type: Sequelize.STRING, primaryKey:true, allowNull: false},
         courseDescrition: {type: Sequelize.STRING, allowNull: false},
         teacher: {type: Sequelize.STRING, allowNull: false},
         image:{type: Sequelize.STRING} 
@@ -50,7 +51,8 @@ Teacher.init(
 
 //????????
 Teacher.hasMany(Courses, {foreignKey:'teacher'})
-Courses.hasMany(Enroll, {as:'enroll_courses', foreignKey:'course', sourceKey:'id'})
-Users.hasMany(Enroll, {as:'enroll_users', foreignKey:'student', sourceKey:'id'})
+Courses.hasMany(Enroll, {foreignKey:'course'})
+Users.hasMany(Enroll, {foreignKey:'student'})
+Teacher.hasMany(Enroll, {foreignKey:'lector'})
 
 module.exports = { Users, Enroll, Courses, Teacher}

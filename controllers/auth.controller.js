@@ -12,7 +12,12 @@ const AuthController = {
     getMain: (req, res, next) =>{
         res.sendFile(path.join(__dirname, '../views/main.html'))
     },
-
+    
+    getCurrentUser : async (req, res, next) => {
+        const userc = await db.models.Users.findOne({ where: { id: parseInt(req.user.id) } })
+        // const userc = await db.models.Users.findOne({ where: { id: parseInt(req.user.id) } })
+        res.send(JSON.stringify(userc))        
+    } ,
     //Login
     postLogin: async (req, res, next) => {
         
@@ -77,12 +82,9 @@ const AuthController = {
                 }
             }
         }
-    },
-    getUserById : (req, res, next) => {
-        const user = await Users.findOne({ where: { id: parseInt(req.params.id) } })
-        res.send(JSON.stringify(user))    
-    }
-    
+     }
+
+      
 }
 
 module.exports = AuthController

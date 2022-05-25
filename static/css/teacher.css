@@ -146,14 +146,14 @@ input{
     
 }
 
-#deleteTeacher, #editTeacher {
+.deleteTeacher, .editTeacher {
     font-family: 'Montserrat', sans-serif;
     background-color: #9471BA; 
     color: #ffffff; 
     border: 3px solid #b6a2cb;
 }
 
-#deleteTeacher:hover, #editTeacher:hover {
+.deleteTeacher:hover, .editTeacher:hover {
     font-family: 'Montserrat', sans-serif;
     background-color: #c4aedb;
     color: white; 

@@ -6,12 +6,6 @@ let router = express.Router()
 
 router.get('/enroll', EnrollController.getEnrollPage)
 router.get('/getEnroll', EnrollController.getEnroll)
-
-// router.post('/addEnroll', EnrollController.addEnroll)
-// router.post('/courses', [abilityCheckMiddleware('create', 'Commits')], CoursController.addCommit)
-
-// router.put('/courses', [abilityCheckMiddleware('update', 'Repos')], CoursController.editCourses)
-
-// router.delete('/courses', [abilityCheckMiddleware('delete', 'Repos')], CoursController.deleteCourses)
+router.post('/addEnroll', EnrollController.addEnroll)
 
 module.exports = router

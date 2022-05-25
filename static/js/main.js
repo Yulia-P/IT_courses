@@ -60,9 +60,11 @@ async function getCourses(){
                 let br4 = document.createElement('br');
                 
                 let button = document.createElement('button');
-                button.setAttribute('id', 'setEnroll');
-                button.setAttribute('class', 'button');
-                button.value=income.id;
+                button.setAttribute('id', 'addEnroll'+income.courseName);
+                // button.setAttribute('class', 'button');
+                button.setAttribute('class', 'button1');
+                button.setAttribute('value', income.courseName);
+                // button.value=income.id;
                 button.setAttribute('onclick', 'addEnroll(this.value)');
                 button.innerHTML='Subscribe';
 
@@ -80,7 +82,69 @@ async function getCourses(){
                 container.appendChild(div);
             })
         }
-        else{
+        else{            
+            let divadd = document.createElement('div');
+            divadd.setAttribute('class', 'AddCourses');
+            divadd.setAttribute('id', 'ADD');
+
+            let AddcourseName = document.createElement('input');
+            AddcourseName.setAttribute('id', 'AddcourseName');
+            AddcourseName.setAttribute('type', 'text');
+            AddcourseName.setAttribute('placeholder', 'AddcourseName');
+            // language.setAttribute('readonly', 'true');
+            let bradd1 = document.createElement('br');
+
+            let Addlanguage = document.createElement('input');
+            Addlanguage.setAttribute('id', 'Addlanguage');
+            Addlanguage.setAttribute('type', 'text');
+            Addlanguage.setAttribute('placeholder', 'Addlanguage');
+            // language.setAttribute('readonly', 'true');
+            let bradd2 = document.createElement('br');
+
+            let Addteacher = document.createElement('input');
+            Addteacher.setAttribute('id', 'Addteacher');
+            Addteacher.setAttribute('type', 'text');
+            Addteacher.setAttribute('placeholder', 'Addteacher');
+            // language.setAttribute('readonly', 'true');
+            let bradd3 = document.createElement('br');
+
+            let Addimage = document.createElement('input');
+            Addimage.setAttribute('id', 'Addimage');
+            Addimage.setAttribute('type', 'text');
+            Addimage.setAttribute('placeholder', 'Addimage');
+            // language.setAttribute('readonly', 'true');
+            let bradd4 = document.createElement('br');
+
+            let AddcourseDescrition = document.createElement('input');
+            AddcourseDescrition.setAttribute('id', 'AddcourseDescrition');
+            AddcourseDescrition.setAttribute('type', 'text');
+            AddcourseDescrition.setAttribute('placeholder', 'AddcourseDescrition');
+            // language.setAttribute('readonly', 'true');
+            let bradd5 = document.createElement('br');
+
+            let addbuttonCourses = document.createElement('button');
+            addbuttonCourses.setAttribute('id', 'addbuttonCourses');
+            addbuttonCourses.setAttribute('class', 'addbuttonCourses');
+            addbuttonCourses.setAttribute('onclick', 'addCourses()');
+            addbuttonCourses.innerHTML='Add';
+            addbuttonCourses.value = 'Add courses';
+            let bradd6 = document.createElement('br');
+
+            divadd.appendChild(AddcourseName);
+            divadd.appendChild(bradd1);
+            divadd.appendChild(Addlanguage);
+            divadd.appendChild(bradd2);
+            divadd.appendChild(Addteacher); 
+            divadd.appendChild(bradd3);
+            divadd.appendChild(Addimage);
+            divadd.appendChild(bradd4);
+            divadd.appendChild(AddcourseDescrition);
+            divadd.appendChild(bradd5);
+            divadd.appendChild(addbuttonCourses);
+            divadd.appendChild(bradd6);           
+            container.appendChild(divadd);
+
+
             res.forEach(income => {
                 let div = document.createElement('div');
                 div.setAttribute('class', 'contentSec');
@@ -93,7 +157,7 @@ async function getCourses(){
                 let br = document.createElement('br');
 
                 let courseName = document.createElement('input');
-                courseName.setAttribute('id', 'courseName'+income.id);
+                courseName.setAttribute('id', 'courseName'+income.courseName);
                 courseName.setAttribute('type', 'text');
                 // courseName.setAttribute('readonly', 'true');
                 courseName.value = income.courseName;
@@ -112,27 +176,27 @@ async function getCourses(){
                 // teacher.setAttribute('readonly', 'true');
                 teacher.value = income.teacher;
                 let br3 = document.createElement('br');
-
               
                 let courseDescrition = document.createElement('textarea');
                 courseDescrition.setAttribute('id', 'courseDescrition');
                 // teacher.setAttribute('type', 'text');
-                courseDescrition.setAttribute('readonly', 'true');
+                // courseDescrition.setAttribute('readonly', 'true');
                 courseDescrition.value = income.courseDescrition;
                 let br4 = document.createElement('br');
                 
                 let deleteCourses = document.createElement('button');
-                deleteCourses.setAttribute('id', 'deleteCourses');
+                deleteCourses.setAttribute('id', 'deleteCourses'+income.courseName);
                 deleteCourses.setAttribute('class', 'deleteCourses');
-                //deleteCourses.setAttribute('onclick', 'deleteCourses(this.value)');
-                deleteCourses.value=income.id;
+                deleteCourses.setAttribute('value',income.courseName)
+                deleteCourses.setAttribute('onclick', 'deleteCourses(this.value)');
                 deleteCourses.innerHTML='Delete';
                 let br5 = document.createElement('br');
 
                 let editCourses = document.createElement('button');
-                editCourses.setAttribute('id', 'editCourses');
+                editCourses.setAttribute('id', 'editCourses'+income.courseName);
                 editCourses.setAttribute('class', 'editCourses');
-                //editCourses.setAttribute('onclick', 'editCourses(this.value)');
+                editCourses.setAttribute('value', income.courseName)
+                editCourses.setAttribute('onclick', 'editCourses(this.value)');
                 editCourses.innerHTML='Edit';
                 let br6 = document.createElement('br');
 
@@ -149,7 +213,7 @@ async function getCourses(){
                 div.appendChild(deleteCourses);
                 div.appendChild(br5);
                 div.appendChild(editCourses);
-                div.appendChild(br6);
+                div.appendChild(br6);                
                 container.appendChild(div);
             })
         }
@@ -223,31 +287,32 @@ async function getTeacher(){
                 let br = document.createElement('br');
 
                 let tname = document.createElement('input');
-                tname.setAttribute('id', 'tname');
+                tname.setAttribute('id', 'tname'+income.tname);
                 tname.setAttribute('type', 'text');
-                tname.setAttribute('readonly', 'true');
+                // tname.setAttribute('readonly', 'true');
                 tname.value = income.tname;
                 let br1 = document.createElement('br');
 
                 let subject = document.createElement('input');
                 subject.setAttribute('id', 'subject');
                 subject.setAttribute('type', 'text');
-                subject.setAttribute('readonly', 'true');
+                // subject.setAttribute('readonly', 'true');
                 subject.value = income.subject;
                 let br2 = document.createElement('br');
 
                 let deleteTeacher = document.createElement('button');
-                deleteTeacher.setAttribute('id', 'deleteTeacher');
+                deleteTeacher.setAttribute('id', 'deleteTeacher'+income.tname);
                 deleteTeacher.setAttribute('class', 'deleteTeacher');
-                //deleteCourses.setAttribute('onclick', 'deleteCourses(this.value)');
-                deleteTeacher.value=income.id;
+                deleteTeacher.setAttribute('value', income.tname)
+                deleteTeacher.setAttribute('onclick', 'deleteTeacher(this.value)');
                 deleteTeacher.innerHTML='Delete';
                 let br3 = document.createElement('br');
 
                 let editTeacher = document.createElement('button');
-                editTeacher.setAttribute('id', 'editTeacher');
+                editTeacher.setAttribute('id', 'editTeacher'+income.tname);
                 editTeacher.setAttribute('class', 'editTeacher');
-                //editCourses.setAttribute('onclick', 'editCourses(this.value)');
+                editTeacher.setAttribute('value', income.tname)
+                editTeacher.setAttribute('onclick', 'editTeacher(this.value)');
                 editTeacher.innerHTML='Edit';
                 let br4 = document.createElement('br');
                            
@@ -273,45 +338,145 @@ async function getEnrollPage() {
     .then(view => {
         document.getElementById('page').innerHTML = view;
     })
-        await getEnroll();
+       await getEnroll();
 }
 
-async function getTeacher(){
+async function getEnroll(){
     let response = await fetch(base_api_path + '/role');
     let user = await response.json();
 
-    await fetch(base_api_path+'/getTeacher', {metod: 'GET'})
+    await fetch(base_api_path+'/getEnroll', {method: 'GET'})
         .then(res => res.json())
         .then(res => {
-            let container = document.getElementById('paget'); 
+            let container = document.getElementById('pagemy'); 
                 
             if(user != 'admin'){
-            res.forEach(income => {
+            res.forEach(res => {
                 let div = document.createElement('div');
                 div.setAttribute('class', 'contentSec');
-                div.setAttribute('id', 'maindiv');
-                
-                let student = document.createElement('input');
-                student.setAttribute('id', 'student');
-                student.setAttribute('type', 'text');
-                student.setAttribute('readonly', 'true');
-                student.value = income.student;
-                let br1 = document.createElement('br');
+                div.setAttribute('id', 'maindiv');                           
+                        
+                let usercour = document.createElement('input')
+                usercour.setAttribute('id', 'user');
+                usercour.setAttribute('type', 'text');
+                usercour.setAttribute('readonly', 'text');
+                usercour.value = res.student;
+                div.appendChild(usercour);
 
-                let course = document.createElement('input');
-                course.setAttribute('id', 'course');
-                course.setAttribute('type', 'text');
-                course.setAttribute('readonly', 'true');
-                course.value = income.course;
-                let br2 = document.createElement('br');
+                let coursmy = document.createElement('input');
+                coursmy.setAttribute('id', 'coursmy');
+                coursmy.setAttribute('type', 'text');
+                coursmy.setAttribute('readonly', 'text');
+                coursmy.value = res.course;
+                div.appendChild(coursmy);
 
-                           
-                div.appendChild(student);
-                div.appendChild(br1);
-                div.appendChild(course);
-                div.appendChild(br2);
+                let lector = document.createElement('input')
+                lector.setAttribute('id', 'lector');
+                lector.setAttribute('type', 'text');
+                lector.setAttribute('readonly', 'text');
+                lector.value = res.lector;
+                div.appendChild(lector);                    
+                    
                 container.appendChild(div);
             })
         }       
     })
+}
+
+async function addEnroll(courseName){
+    await fetch(base_api_path +'/addEnroll',{
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(
+            {
+                courseName: document.getElementById('addEnroll'+courseName).value,
+                teacher: document.getElementById('teacher').value
+            }
+        )
+    })
+    await getEnrollPage();
+}
+
+async function deleteCourses(courseName){
+    await fetch(base_api_path +'/deleteCourses',
+    {
+        method: 'POST', 
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            courseName:courseName
+        })
+    })
+    await getCoursesPage();
+}
+
+async function deleteTeacher(tname){
+    await fetch(base_api_path +'/deleteTeacher',
+    {
+        method: 'POST', 
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            tname:tname
+        })
+    })
+    await getTeacherPage();
+}
+
+async function editCourses(courseName){
+    console.log(document.getElementById('courseName'+courseName).value);
+    await fetch(base_api_path + '/editCourses',
+    {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(
+            {
+                courseName: courseName,
+                image: document.getElementById('imgCou').value,
+                language:  document.getElementById('language').value,
+                teacher: document.getElementById('teacher').value,
+                courseDescrition: document.getElementById('courseDescrition').value,
+            }
+        )
+    })
+    getTeacherPage();
+
+}
+
+async function editTeacher(tname){
+    console.log(document.getElementById('tname'+tname).value);
+    await fetch(base_api_path + '/editTeacher',
+    {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(
+            {
+                tname: tname,
+                photo: document.getElementById('imgTea').value,
+                subject:  document.getElementById('subject').value,
+            }
+        )
+    })
+    getTeacherPage();
+}
+
+async function addCourses(){
+    fetch(base_api_path + '/addCourses',
+    {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(
+            {
+                courseName: document.getElementById('AddcourseName').value,
+                language: document.getElementById('Addlanguage').value,
+                courseDescrition: document.getElementById('AddcourseDescrition').value,
+                teacher: document.getElementById('Addteacher').value,
+                image: document.getElementById('Addimage').value
+            }
+        )
+    })
+    document.getElementById('AddcourseName').value="";
+    document.getElementById('Addlanguage').value="";
+    document.getElementById('AddcourseDescrition').value="";
+    document.getElementById('Addteacher').value="";
+    document.getElementById('Addimage').value="";
+   await getCoursesPage()
 }
