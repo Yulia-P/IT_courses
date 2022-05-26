@@ -41,6 +41,14 @@ const TeacherController = {
             where:{ tname: req.body.tname}
         }).then((res) => {console.log(res);
         });
+    },
+    addTeacher:(req, res, next) => {
+        db.models.Teacher.create({
+            tname:  req.body.tname,
+            photo:  req.body.photo,
+            subject:  req.body.subject
+        })
+        .catch((err) => console.log('Error: '+err.message));
     }
 }
 

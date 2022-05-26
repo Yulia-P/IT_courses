@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="style/css/courses.css">
+        <link rel="stylesheet" href="style/css/chat.css">
+        
+        
+        <title>Chat socket</title>
+</head>
+<body>
+<div class="main">    
+        <img class="imgbrain" src="/style/img/brain.png">
+        <form class='fbrain' action='/main'>
+            <button class="brain">BRAIN HACK</button>
+        </form>
+        <button class="courses" onclick="getCoursesPage()" >COURSES</button>
+        <button class="teacher" onclick="getTeacherPage()">TEACHER</button>
+        <button class="mycourses" onclick="getEnrollPage()">MY COURSES</button>
+        <form class='chat' action = "/getChat">
+            <button class="chat" action ="/getChat" >CHAT</button>
+        </form>
+        <form class='logout' action = "/logout">
+            <button class="login" action ="/logout" >LOGOUT/LOGIN</button>
+        </form>    
+        <form class='register' action = "/register">
+            <button class="login" action ="/register">REGISTRATION</button>
+        </form>
+</div>
+
+<header class="head">
+    <ul class="messages">  
+
+    </ul>
+    <form class="form">
+        <div class="name">Yulia</div>
+        <input type="text" class="input" autocomplete="off">
+        <button class="btnmess">Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="style/js/main.js"></script>
+    <script src="style/js/chat.js"></script> 
+</header>
+<div class="chatdiv" id="chatdiv">
+    
+</div>
+
+<div class="pagec" id="pagec">
+
+</div>
+
+</body>
+</html>

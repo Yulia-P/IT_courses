@@ -9,13 +9,20 @@ const CoursesController = {
         res.send(view);
         // res.sendFile(path.join(__dirname, '../static/html/courses.html'))
     },
+    // getChatPage: (req, res, next) => {
+    //     let view = fs.readFileSync('./views/chat.html', "utf8");
+    //     res.send(view);
+    // },
+    getChatPage: (req, res, next) =>{
+        res.sendFile(path.join(__dirname, '../views/chat.html'))
+    },
 
     getCourses: (req, res, next) => {
         db.models.Courses.findAll()
         .then(expense => res.send(JSON.stringify(expense)))
         .catch((err) => console.log('Error: ' + err.message));           
     },
-    
+   
     deleteCourses: (req, res, next) => {
         db.models.Enroll.destroy({where: {course: req.body.courseName}}).then(()=>{res.send();})
         .catch((err) => console.log('Error: ' + err.message))
@@ -50,6 +57,12 @@ const CoursesController = {
             courseName:  req.body.courseName
         })
         .catch((err) => console.log('Error: '+err.message));
+    },
+    Search: (req, res, next) => {
+        // console.log(req.body.language)
+        db.models.Courses.findAll({where: {language: req.body.language}})
+        .then(expense => res.send(JSON.stringify(expense)))
+        .catch((err) => console.log('Error: ' + err.message)); 
     }
 }
 

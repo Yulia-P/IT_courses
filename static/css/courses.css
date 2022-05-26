@@ -42,16 +42,17 @@ body{
 .courses{
     border: none;
     background: none;
-    margin-top: 2;
+    width: 150px; 
+    /* margin-top: 15; */
     font-size: 25px;
     margin-left: 35;
-    color: #5DDADB;   
+    color: #5DDADB
 }
 .teacher{
     border: none;
     background: none;
     width: 150px;
-    margin-top: 2;
+    /* margin-top: 15; */
     font-size: 25px;
     margin-left: 35;
     color: #5DDADB   
@@ -64,6 +65,14 @@ body{
     font-size: 25px;
     margin-left: 35;
     color: #5DDADB   
+}
+.chat{
+    border: none;
+    background: none;
+    width: 150px;
+    font-size: 25px;
+    margin-left: 35;
+    color: #5DDADB  
 }
 
 .login{
@@ -78,13 +87,13 @@ body{
 .logout{
     margin-top: 15;
     font-size: 25px;
-    margin-left: 350;
+    margin-left: 100;
 }
 
 .register{
     margin-top: 15;
     font-size: 25px;
-    margin-left: 40;
+    margin-left: 70;
 }
 
 .pagec{
@@ -92,19 +101,7 @@ body{
     display: flex;
 }
 
-.contentSec{
-    /* color: rgb(198, 198, 198); */
-    display: flex;
-    justify-content: start;
-    font-family: 'Montserrat', sans-serif;
-    flex-direction: column;
-    width: 18%;
-    margin-top: 15px;
-    margin-left: 5px;
-    background: #ED5FBA;
-    border-radius:  0.25rem;
-}
-
+/* каритнка с курсом */
 #imgCou{
     width: 125px;
     height: 80px;
@@ -112,28 +109,8 @@ body{
     margin: 0 auto;
     border-radius: 0.25rem;
 }
-
-/* input{
-   
-    font-family: 'Montserrat', sans-serif;
-    background: #ED5FBA;
-    border:none;
-    display: block;
-    width: 100%;
-    height: calc(2.25rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-clip: padding-box;
-    border: 1px solid #ED5FBA;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;  
-} */
-
+/* textarea - описание курса */
 #courseDescrition{
-    /* color: rgb(135, 135, 135); */
     background: #ED5FBA;
     font-family: 'Montserrat', sans-serif;
     height:150px;
@@ -146,9 +123,10 @@ body{
     border: 1px solid #ED5FBA;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;   
-}
+} 
 
-.addbuttonCourses {
+/* кнопка добавления */
+.addbuttonCourses, .SearchButt {
     background-color: #8EC9D8; 
     border: none;
     color: white;
@@ -165,22 +143,20 @@ body{
     margin-left: 30;
     
 }
-
-.addbuttonCourses {
+.addbuttonCourses, .SearchButt {
     font-family: 'Montserrat', sans-serif;
     background-color: #9471BA; 
     color: #ffffff; 
     border: 3px solid #b6a2cb;
 }
-
-.addbuttonCourses {
+.addbuttonCourses:hover, .SearchButt:hover {
     font-family: 'Montserrat', sans-serif;
     background-color: #c4aedb;
     color: white; 
     border: none          
 } 
 
-/* .AddCourses{    
+#ADD{    
     display: flex;
     justify-content: start;
     font-family: 'Montserrat', sans-serif;
@@ -189,16 +165,17 @@ body{
     margin-top: 68px;
     margin-left: 5px;
     width: 320;
-    background: #ED5FBA;
+    /* background: #ED5FBA; */
     border-radius:  0.25rem;
     padding: 8;
-} */
+}
     
-.AddcourseName, .Addlanguage, .Addteacher, .Addimage, .AddcourseDescrition {
+/* добавление новых записей */
+#AddcourseName, #Addlanguage, #Addteacher, #Addimage, #AddcourseDescrition, #Searchinp {
     display: block;
     margin-bottom: 0.25rem;
 }
-.AddcourseName, .Addlanguage, .Addteacher, .Addimage, .AddcourseDescrition{
+#AddcourseName, #Addlanguage, #Addteacher, #Addimage, #AddcourseDescrition{
     display: block;
     margin: 0 auto;
     width: 100%;
@@ -216,12 +193,12 @@ body{
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.AddcourseName::placeholder, .Addlanguage::placeholder, .Addteacher::placeholder, .Addimage::placeholder, .AddcourseDescrition::placeholder {
+#AddcourseName::placeholder, #Addlanguage::placeholder, #Addteacher::placeholder, #Addimage::placeholder, #AddcourseDescrition::placeholder, #Searchinp::placeholder {
     color: #212529;
     opacity: 0.4;
 }
 
-.AddcourseName:focus, .Addlanguage:focus, .Addteacher:focus, .Addimage:focus, .AddcourseDescrition:focus {
+#AddcourseName:focus, #Addlanguage:focus, #Addteacher:focus, #Addimage:focus, #AddcourseDescrition:focus, #Searchinp:focus {
     color: #212529;
     background-color: #fff;
     border-color: #bdbdbd;
@@ -230,11 +207,12 @@ body{
     box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
 }
 
-.AddcourseName:disabled,.AddcourseName[readonly], 
-.Addlanguage:disabled, .Addlanguage[readonly],
-.Addteacher, .Addteacher[readonly], 
-.Addimage, .Addimage[readonly],
-.AddcourseDescrition, .AddcourseDescrition[readonly] {
+#AddcourseName:disabled,#AddcourseName[readonly], 
+#Addlanguage:disabled, #Addlanguage[readonly],
+#Addteacher, #Addteacher[readonly], 
+#Addimage, #Addimage[readonly],
+#AddcourseDescrition, #AddcourseDescrition[readonly],
+#Searchinp, #Searchinp[readonly] {
     background-color: #f5f5f5;
     opacity: 1;
 }
@@ -268,3 +246,25 @@ body{
     color: white; 
     border: none          
 } 
+
+#Search{
+    /* width: 23%; */
+    margin-top: 80;
+}
+
+#Searchinp{
+    display: block;
+    width: 20%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

@@ -90,35 +90,35 @@ async function getCourses(){
             let AddcourseName = document.createElement('input');
             AddcourseName.setAttribute('id', 'AddcourseName');
             AddcourseName.setAttribute('type', 'text');
-            AddcourseName.setAttribute('placeholder', 'AddcourseName');
+            AddcourseName.setAttribute('placeholder', 'Enter Course Name');
             // language.setAttribute('readonly', 'true');
             let bradd1 = document.createElement('br');
 
             let Addlanguage = document.createElement('input');
             Addlanguage.setAttribute('id', 'Addlanguage');
             Addlanguage.setAttribute('type', 'text');
-            Addlanguage.setAttribute('placeholder', 'Addlanguage');
+            Addlanguage.setAttribute('placeholder', 'Enter Language');
             // language.setAttribute('readonly', 'true');
             let bradd2 = document.createElement('br');
 
             let Addteacher = document.createElement('input');
             Addteacher.setAttribute('id', 'Addteacher');
             Addteacher.setAttribute('type', 'text');
-            Addteacher.setAttribute('placeholder', 'Addteacher');
+            Addteacher.setAttribute('placeholder', 'Enter Teacher');
             // language.setAttribute('readonly', 'true');
             let bradd3 = document.createElement('br');
 
             let Addimage = document.createElement('input');
             Addimage.setAttribute('id', 'Addimage');
             Addimage.setAttribute('type', 'text');
-            Addimage.setAttribute('placeholder', 'Addimage');
+            Addimage.setAttribute('placeholder', 'Enter path to Image');
             // language.setAttribute('readonly', 'true');
             let bradd4 = document.createElement('br');
 
             let AddcourseDescrition = document.createElement('input');
             AddcourseDescrition.setAttribute('id', 'AddcourseDescrition');
             AddcourseDescrition.setAttribute('type', 'text');
-            AddcourseDescrition.setAttribute('placeholder', 'AddcourseDescrition');
+            AddcourseDescrition.setAttribute('placeholder', 'Enter Course Descrition');
             // language.setAttribute('readonly', 'true');
             let bradd5 = document.createElement('br');
 
@@ -275,6 +275,48 @@ async function getTeacher(){
             })
         }
         else{
+            let divadd = document.createElement('div');
+            divadd.setAttribute('class', 'AddTeacher');
+            divadd.setAttribute('id', 'ADD');
+
+            let Addtname = document.createElement('input');
+            Addtname.setAttribute('id', 'Addtname');
+            Addtname.setAttribute('type', 'text');
+            Addtname.setAttribute('placeholder', 'Enter Teacher Name');
+            // language.setAttribute('readonly', 'true');
+            let bradd1 = document.createElement('br');
+
+            let Addphoto = document.createElement('input');
+            Addphoto.setAttribute('id', 'Addphoto');
+            Addphoto.setAttribute('type', 'text');
+            Addphoto.setAttribute('placeholder', 'Enter path to photo');
+            // language.setAttribute('readonly', 'true');
+            let bradd2 = document.createElement('br');
+
+            let Addsubject = document.createElement('input');
+            Addsubject.setAttribute('id', 'Addsubject');
+            Addsubject.setAttribute('type', 'text');
+            Addsubject.setAttribute('placeholder', 'Enter Subject');
+            // language.setAttribute('readonly', 'true');
+            let bradd3 = document.createElement('br');
+
+            let addbuttonTeacher = document.createElement('button');
+            addbuttonTeacher.setAttribute('id', 'addbuttonTeacher');
+            addbuttonTeacher.setAttribute('class', 'addbuttonTeacher');
+            addbuttonTeacher.setAttribute('onclick', 'addTeacher()');
+            addbuttonTeacher.innerHTML='Add';
+            addbuttonTeacher.value = 'Add Teacher';
+            let bradd4 = document.createElement('br');
+
+            divadd.appendChild(Addtname);
+            divadd.appendChild(bradd1);
+            divadd.appendChild(Addphoto);
+            divadd.appendChild(bradd2);
+            divadd.appendChild(Addsubject); 
+            divadd.appendChild(bradd3);            
+            divadd.appendChild(addbuttonTeacher);
+            divadd.appendChild(bradd4);      
+            container.appendChild(divadd);
             res.forEach(income => {
                 let div = document.createElement('div');
                 div.setAttribute('class', 'contentSec');
@@ -478,5 +520,118 @@ async function addCourses(){
     document.getElementById('AddcourseDescrition').value="";
     document.getElementById('Addteacher').value="";
     document.getElementById('Addimage').value="";
-   await getCoursesPage()
+   await getCoursesPage()   
 }
+
+async function addTeacher(){
+fetch(base_api_path + '/addTeacher',
+    {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(
+            {
+                tname: document.getElementById('Addtname').value,
+                photo: document.getElementById('Addphoto').value,                
+                subject: document.getElementById('Addsubject').value
+                
+            }
+        )
+    })
+    document.getElementById('Addtname').value="";
+    document.getElementById('Addphoto').value="";
+    document.getElementById('Addsubject').value="";
+
+   await getTeacherPage()   
+}
+async function Search(){
+    fetch(base_api_path + '/Search', 
+    {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(
+            {
+                language: document.getElementById('Searchinp').value,
+            })
+    })
+    document.getElementById('Searchinp').value="";
+  await getSearch()
+}
+
+async function getSearch(){
+    await fetch(base_api_path+'/getSearch', {method: 'GET'})
+        .then(res => res.json())
+        .then(res => {
+            let container = document.getElementById('pagelang'); 
+            res.forEach(res => {
+                let div = document.createElement('div');
+                div.setAttribute('class', 'contentSec');
+                div.setAttribute('id', 'maindiv');
+                
+                let img = document.createElement('img');
+                img.setAttribute('id', 'imageCou');
+                img.id='imgCou';
+                img.src = income.image;
+                let br = document.createElement('br');
+
+                let courseName = document.createElement('input');
+                courseName.setAttribute('id', 'courseName'+income.id);
+                courseName.setAttribute('type', 'text');
+                courseName.setAttribute('readonly', 'true');
+                courseName.value = income.courseName;
+                let br1 = document.createElement('br');
+
+                let language = document.createElement('input');
+                language.setAttribute('id', 'language');
+                language.setAttribute('type', 'text');
+                language.setAttribute('readonly', 'true');
+                language.value = income.language;
+                let br2 = document.createElement('br');
+
+                let teacher = document.createElement('input');
+                teacher.setAttribute('id', 'teacher');
+                teacher.setAttribute('type', 'text');
+                teacher.setAttribute('readonly', 'true');
+                teacher.value = income.teacher;
+                let br3 = document.createElement('br');
+
+              
+                let courseDescrition = document.createElement('textarea');
+                courseDescrition.setAttribute('id', 'courseDescrition');
+                // teacher.setAttribute('type', 'text');
+                courseDescrition.setAttribute('readonly', 'true');
+                courseDescrition.value = income.courseDescrition;
+                let br4 = document.createElement('br');
+                
+                let button = document.createElement('button');
+                button.setAttribute('id', 'addEnroll'+income.courseName);
+                // button.setAttribute('class', 'button');
+                button.setAttribute('class', 'button1');
+                button.setAttribute('value', income.courseName);
+                // button.value=income.id;
+                button.setAttribute('onclick', 'addEnroll(this.value)');
+                button.innerHTML='Subscribe';
+
+                div.appendChild(img);
+                div.appendChild(br);
+                div.appendChild(courseName);
+                div.appendChild(br1);
+                div.appendChild(language); 
+                div.appendChild(br2);
+                div.appendChild(teacher);
+                div.appendChild(br3);
+                div.appendChild(courseDescrition);
+                div.appendChild(br4);
+                div.appendChild(button);
+                container.appendChild(div);
+            })
+})
+}
+
+// async function getChatPage() {
+//     await fetch(base_api_path_chat + '/getChat', {method: 'GET'})
+//     .then(response => response.text())
+//     .then(view => {
+//         document.getElementById('page').innerHTML = view;
+//     })
+        
+// }

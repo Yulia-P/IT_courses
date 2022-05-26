@@ -1,11 +1,12 @@
 const express = require('express')
+const app = express()
 const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
 
 
-
-const app = express()
 app.use(cookieParser('ITCOURSES'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -17,11 +18,25 @@ global.accessKey = 'accsessTokenSecret'
 global.refreshKey = 'refreshTokenSecret'
 global.oldRefreshKeyCount = 0
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname+'/views/main.html')
+})
+
+io.on('connection', (socket) => {
+    socket.on('chat message', (data) => {
+        io.emit('chat message', {
+           message: data.message,
+           name: data.name 
+        })
+    })
+
+})
 
 let authRouter = require('./routes/auth.route')
 let coursesRouter = require('./routes/courses.route')
 let teacherRouter = require('./routes/teacher.route')
 let enrollmentsRouter = require('./routes/enrollments.route')
+const { response } = require('express')
 
 app.use((req, res, next) => {
     if (req.cookies.accessToken) {
@@ -45,4 +60,4 @@ app.use((err, req, res, next) => {
     res.send(`${err}`)
 })
 
-app.listen(3000, () => {console.log('come and get me on 3000 port')})
+http.listen(3000, () => {console.log('Server start localhost:3000')})

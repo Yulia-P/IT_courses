@@ -3,6 +3,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style/css/courses.css">
 <script src="style/js/main.js"></script>
+<script src="style/js/chat.js"></script>
 <!-- <script src="style/js/courses.js"></script>
 <script src="style/js/teacher.js"></script> -->
 <div class="main">    
@@ -22,7 +23,12 @@
     <!-- <form class='fenroll' action ='/enroll'> -->
         <button class="mycourses" onclick="getEnrollPage()">MY COURSES</button>
     <!-- </form>     -->
+       <!-- <button class="chat" onclick="getChatPage()">CHAT</button> -->
 
+       <form class='chat' action = "/getChat">
+        <button class="chat" action ="/getChat" >CHAT</button>
+    </form>
+    
     <form class='logout' action = "/logout">
         <button class="login" action ="/logout" >LOGOUT/LOGIN</button>
     </form>
@@ -32,14 +38,13 @@
     </form>
 </div>
 
-<!-- <div class="AddCourses" id="ADD">
-    <input type="text" id="AddcourseName" class="AddcourseName" placeholder="Enter Course Name">
-    <input type="text" id="Addlanguage" class="Addlanguage" placeholder="Enter Language">
-    <input type="text" id="Addteacher" class="Addteacher" placeholder="Enter Teacher">
-    <input type="text" id="Addimage" class="Addimage" placeholder="Enter Image">
-    <input type="text" id="AddcourseDescrition" class="AddcourseDescrition" placeholder="Enter Course Descrition">
-    <button class="addCoursesButt" action ="/addCourses">Add Courses</button>
-</div> -->
+<div class="Search" id="Search">
+    <input type="text" id="Searchinp" class="Searchinp" placeholder="Enter the language to search">
+    <button class="SearchButt" onclick="Search()" value="getlangCours">Search</button>
+</div>
+<div class="pagelang" id="pagelang">
+    
+</div>
 
 <div class="pagec" id="pagec">
 

@@ -8,11 +8,5 @@ router.get('/teacher', TeacherController.getTeacherPage)
 router.get('/getTeacher', TeacherController.getTeacher)
 router.post('/deleteTeacher', TeacherController.deleteTeacher)
 router.post('/editTeacher', TeacherController.editTeacher);
-// router.post('/courses', [abilityCheckMiddleware('create', 'Repos')], CoursController.addCourses)
-// router.post('/courses', [abilityCheckMiddleware('create', 'Commits')], CoursController.addCommit)
-
-// router.put('/courses', [abilityCheckMiddleware('update', 'Repos')], CoursController.editCourses)
-
-// router.delete('/courses', [abilityCheckMiddleware('delete', 'Repos')], CoursController.deleteCourses)
-
+router.post('/addTeacher', TeacherController.addTeacher);
 module.exports = router

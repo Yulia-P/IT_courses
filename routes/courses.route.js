@@ -9,9 +9,9 @@ router.get('/getCourses', CoursesController.getCourses)
 router.post('/deleteCourses', CoursesController.deleteCourses)
 router.post('/editCourses', CoursesController.editCourses)
 router.post('/addCourses', CoursesController.addCourses)
-
-// router.put('/courses', [abilityCheckMiddleware('update', 'Repos')], CoursController.editCourses)
-
+router.post('/Search', CoursesController.Search)
+router.get('/getSearch', CoursesController.Search)
+router.get('/getChat', CoursesController.getChatPage)
 
 
 module.exports = router
