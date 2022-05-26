@@ -508,16 +508,16 @@ async function editTeacher(tname){
 }
 
 async function addCourses(){
-    let AddcourseName = document.getElementById('AddcourseName');
-    let Addlanguage = document.getElementById('Addlanguage');
-    let AddcourseDescrition = document.getElementById('AddcourseDescrition');
-    let Addteacher = document.getElementById('Addteacher');
-    let Addimage = document.getElementById('Addimage');
-    if(AddcourseName.value.length==0||Addlanguage.value.length==0||AddcourseDescrition.value.length||Addteacher.value.length==0||Addimage.value.length==0)
-    {
-        window.alert("Check the fields, they must not be empty");
-    }
-    else {
+    // let AddcourseName = document.getElementById('AddcourseName');
+    // let Addlanguage = document.getElementById('Addlanguage');
+    // let AddcourseDescrition = document.getElementById('AddcourseDescrition');
+    // let Addteacher = document.getElementById('Addteacher');
+    // let Addimage = document.getElementById('Addimage');
+    // if(AddcourseName.value.length==0||Addlanguage.value.length==0||AddcourseDescrition.value.length||Addteacher.value.length==0||Addimage.value.length==0)
+    // {
+    //     window.alert("Check the fields, they must not be empty");
+    // }
+    // else {
     fetch(base_api_path + '/addCourses',
     {
         method: 'POST',
@@ -540,7 +540,7 @@ async function addCourses(){
     document.getElementById('Addimage').value="";
    await getCoursesPage()   
 }
-}
+// }
 
 async function addTeacher(){
     let Addtname = document.getElementById('Addtname');
@@ -567,7 +567,6 @@ async function addTeacher(){
         document.getElementById('Addtname').value="";
         document.getElementById('Addphoto').value="";
         document.getElementById('Addsubject').value="";
-
     await getTeacherPage()
     }
 }
