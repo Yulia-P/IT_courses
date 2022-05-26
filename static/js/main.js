@@ -1,5 +1,11 @@
 const base_api_path = `${window.location.origin}`;
 
+function checkFields(value) {
+    if (value.length != 0)
+        return true;
+    else return false;
+}
+
 async function getCoursesPage() {
     await fetch(base_api_path + '/courses', {method: 'GET'})
     .then(response => response.text())
@@ -485,6 +491,7 @@ async function editCourses(courseName){
 
 async function editTeacher(tname){
     console.log(document.getElementById('tname'+tname).value);
+       
     await fetch(base_api_path + '/editTeacher',
     {
         method: 'POST',
@@ -501,12 +508,23 @@ async function editTeacher(tname){
 }
 
 async function addCourses(){
+    let AddcourseName = document.getElementById('AddcourseName');
+    let Addlanguage = document.getElementById('Addlanguage');
+    let AddcourseDescrition = document.getElementById('AddcourseDescrition');
+    let Addteacher = document.getElementById('Addteacher');
+    let Addimage = document.getElementById('Addimage');
+    if(AddcourseName.value.length==0||Addlanguage.value.length==0||AddcourseDescrition.value.length||Addteacher.value.length==0||Addimage.value.length==0)
+    {
+        window.alert("Check the fields, they must not be empty");
+    }
+    else {
     fetch(base_api_path + '/addCourses',
     {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(
             {
+                
                 courseName: document.getElementById('AddcourseName').value,
                 language: document.getElementById('Addlanguage').value,
                 courseDescrition: document.getElementById('AddcourseDescrition').value,
@@ -522,28 +540,44 @@ async function addCourses(){
     document.getElementById('Addimage').value="";
    await getCoursesPage()   
 }
+}
 
 async function addTeacher(){
-fetch(base_api_path + '/addTeacher',
+    let Addtname = document.getElementById('Addtname');
+    let Addphoto = document.getElementById('Addphoto');
+    let Addsubject = document.getElementById('Addsubject');
+    if(Addtname.value.length==0|| Addphoto.value.length==0|| Addsubject.value.length==0)
     {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(
-            {
-                tname: document.getElementById('Addtname').value,
-                photo: document.getElementById('Addphoto').value,                
-                subject: document.getElementById('Addsubject').value
-                
-            }
-        )
-    })
-    document.getElementById('Addtname').value="";
-    document.getElementById('Addphoto').value="";
-    document.getElementById('Addsubject').value="";
+        window.alert("Check the fields, they must not be empty");
+    }
+    else {
+    fetch(base_api_path + '/addTeacher',
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(
+                {
+                    tname: document.getElementById('Addtname').value,
+                    photo: document.getElementById('Addphoto').value,                
+                    subject: document.getElementById('Addsubject').value
+                    
+                }
+            )
+        })
+        document.getElementById('Addtname').value="";
+        document.getElementById('Addphoto').value="";
+        document.getElementById('Addsubject').value="";
 
-   await getTeacherPage()   
+    await getTeacherPage()
+    }
 }
 async function Search(){
+    let Searchinp = document.getElementById('Searchinp');
+    if(Searchinp.value.length==0)
+    {
+        window.alert("Check the fields, they must not be empty");
+    }
+    else {
     fetch(base_api_path + '/Search', 
     {
         method: 'POST',
@@ -553,16 +587,10 @@ async function Search(){
                 language: document.getElementById('Searchinp').value,
             })
     })
-    document.getElementById('Searchinp').value="";
-  await getSearch()
-}
-
-async function getSearch(){
-    await fetch(base_api_path+'/getSearch', {method: 'GET'})
-        .then(res => res.json())
+    .then(res => res.json())
         .then(res => {
             let container = document.getElementById('pagelang'); 
-            res.forEach(res => {
+            // res.forEach(res => {
                 let div = document.createElement('div');
                 div.setAttribute('class', 'contentSec');
                 div.setAttribute('id', 'maindiv');
@@ -570,28 +598,28 @@ async function getSearch(){
                 let img = document.createElement('img');
                 img.setAttribute('id', 'imageCou');
                 img.id='imgCou';
-                img.src = income.image;
+                img.src = res.image;
                 let br = document.createElement('br');
 
                 let courseName = document.createElement('input');
-                courseName.setAttribute('id', 'courseName'+income.id);
+                courseName.setAttribute('id', 'courseName'+res.id);
                 courseName.setAttribute('type', 'text');
                 courseName.setAttribute('readonly', 'true');
-                courseName.value = income.courseName;
+                courseName.value = res.courseName;
                 let br1 = document.createElement('br');
 
                 let language = document.createElement('input');
                 language.setAttribute('id', 'language');
                 language.setAttribute('type', 'text');
                 language.setAttribute('readonly', 'true');
-                language.value = income.language;
+                language.value = res.language;
                 let br2 = document.createElement('br');
 
                 let teacher = document.createElement('input');
                 teacher.setAttribute('id', 'teacher');
                 teacher.setAttribute('type', 'text');
                 teacher.setAttribute('readonly', 'true');
-                teacher.value = income.teacher;
+                teacher.value = res.teacher;
                 let br3 = document.createElement('br');
 
               
@@ -599,14 +627,14 @@ async function getSearch(){
                 courseDescrition.setAttribute('id', 'courseDescrition');
                 // teacher.setAttribute('type', 'text');
                 courseDescrition.setAttribute('readonly', 'true');
-                courseDescrition.value = income.courseDescrition;
+                courseDescrition.value = res.courseDescrition;
                 let br4 = document.createElement('br');
                 
                 let button = document.createElement('button');
-                button.setAttribute('id', 'addEnroll'+income.courseName);
+                button.setAttribute('id', 'addEnroll'+res.courseName);
                 // button.setAttribute('class', 'button');
                 button.setAttribute('class', 'button1');
-                button.setAttribute('value', income.courseName);
+                button.setAttribute('value', res.courseName);
                 // button.value=income.id;
                 button.setAttribute('onclick', 'addEnroll(this.value)');
                 button.innerHTML='Subscribe';
@@ -624,14 +652,8 @@ async function getSearch(){
                 div.appendChild(button);
                 container.appendChild(div);
             })
-})
-}
 
-// async function getChatPage() {
-//     await fetch(base_api_path_chat + '/getChat', {method: 'GET'})
-//     .then(response => response.text())
-//     .then(view => {
-//         document.getElementById('page').innerHTML = view;
-//     })
-        
-// }
+        //  })
+        document.getElementById('Searchinp').value="";
+}
+}

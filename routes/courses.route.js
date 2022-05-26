@@ -10,7 +10,6 @@ router.post('/deleteCourses', CoursesController.deleteCourses)
 router.post('/editCourses', CoursesController.editCourses)
 router.post('/addCourses', CoursesController.addCourses)
 router.post('/Search', CoursesController.Search)
-router.get('/getSearch', CoursesController.Search)
 router.get('/getChat', CoursesController.getChatPage)
 
 
